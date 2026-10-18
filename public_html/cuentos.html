@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordy | Cuenta cuentos</title>
+  <link rel="stylesheet" href="estilos/estilo.css">
+</head>
+<body class="pagina-cuentos" data-requiere-sesion>
+
+  <!-- Menú (hamburguesa) -->
+  <button type="button" id="btnMenu" class="btn-menu" aria-label="Abrir menú" aria-expanded="false">
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <path d="M6 9h22M6 17h22M6 25h22" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <nav id="menuPanel" class="menu-panel" aria-label="Menú principal">
+    <a href="inicio.html">Inicio</a>
+    <a href="cuentos.html">Cuenta cuentos</a>
+    <button type="button" id="menuCerrarSesion">Cerrar sesión</button>
+  </nav>
+
+  <!-- Imagen del gusano (img/wordy-logo.png) -->
+  <div class="logo">
+    <img src="img/wordy_logo.png" alt="Wordy">
+  </div>
+
+  <main class="cuentos">
+    <h1 class="titulo">Cuenta cuentos</h1>
+    <p class="subtitulo">¡Enciende tus ojos y oídos de detective</p>
+
+    <section class="tarjeta-instrucciones">
+      <p>1. Elige tu nivel. Empieza a jugar y desbloquea nuevos cuentos conforme avances.</p>
+      <p>2. Escucha y completa. Elige la palabra correcta cuando el audio se detenga y recibe retroalimentación.</p>
+      <p>3. ¡Responde y gana!</p>
+      <p class="centrado">Contesta la trivia final para ganar tus estrellas de súper lector.</p>
+
+      <div class="acciones-cuento">
+        <a href="#" id="btnJugar" class="btn btn-naranja btn-grande">¡Jugar ahora!</a>
+        <!-- Imagen del gusano lector (img/gusano-lector.png) -->
+        <img class="acciones-gusano" src="img/gusano_lector.png" alt="">
+      </div>
+    </section>
+  </main>
+
+  <!-- Volver al inicio -->
+  <a href="inicio.html" class="btn-casa" aria-label="Ir al inicio">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 4 3 15h4v12h7v-8h4v8h7V15h4L16 4z" fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

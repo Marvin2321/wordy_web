@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordy | Crear cuenta</title>
+  <link rel="stylesheet" href="estilos/estilo.css">
+</head>
+<body>
+
+  <!-- Imagen del gusano (colocar el archivo en img/wordy-logo.png) -->
+  <div class="logo">
+    <img src="img/wordy_logo.png" alt="Wordy">
+  </div>
+
+  <main class="contenedor">
+    <h1 class="titulo">¡Bienvenido a Wordy!</h1>
+    <p class="subtitulo">Donde las letras cobran vida...</p>
+
+    <div class="avatar" aria-hidden="true">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#fff8ec" stroke="#1f2a4d" stroke-width="2.5"/>
+        <circle cx="24" cy="18" r="8" fill="#1f2a4d"/>
+        <path d="M8 38c2-8 8-11 16-11s14 3 16 11c-4 4-9 6-16 6s-12-2-16-6z" fill="#1f2a4d"/>
+      </svg>
+    </div>
+
+    <!-- Cuando exista la base de datos, cambiar action por el archivo que procese el registro -->
+    <form id="formRegistro" class="tarjeta" action="php/registro.php" method="POST" novalidate>
+      <h2>Crea una cuenta para continuar</h2>
+
+      <div class="campo">
+        <select id="tipo_cuenta" name="tipo_cuenta" required aria-label="Tipo de cuenta">
+          <option value="" selected disabled hidden>Tipo de cuenta</option>
+          <option value="estudiante">Estudiante</option>
+          <option value="docente">Docente</option>
+          <option value="tutor">Padre / Tutor</option>
+        </select>
+        <span class="error">Selecciona un tipo de cuenta.</span>
+      </div>
+
+      <div class="campo">
+        <input type="email" id="correo" name="correo" placeholder="Correo" autocomplete="email" required>
+        <span class="error">Ingresa un correo válido.</span>
+      </div>
+
+      <div class="campo">
+        <input type="text" id="usuario" name="usuario" placeholder="Usuario" autocomplete="username" minlength="4" maxlength="20" required>
+        <span class="error">El usuario debe tener de 4 a 20 caracteres.</span>
+      </div>
+
+      <div class="campo">
+        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" autocomplete="new-password" minlength="6" required>
+        <span class="error">La contraseña debe tener al menos 6 caracteres.</span>
+      </div>
+
+      <p id="mensaje" class="mensaje" role="alert" aria-live="polite"></p>
+    </form>
+
+    <div class="botones">
+      <button type="submit" form="formRegistro" class="btn btn-turquesa">Registrar</button>
+    </div>
+
+    <p class="enlace">¿Ya tienes cuenta? <a href="index.html">Inicia sesión</a></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

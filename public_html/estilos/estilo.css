@@ -1,0 +1,694 @@
+/* ==========================================================
+   WORDY - Hoja de estilos (login y registro)
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --azul-ola: #4b76c8;
+  --crema: #fff8ec;
+  --navy: #1f2a4d;
+  --amarillo: #ffe594;
+  --amarillo-borde: #ffd75e;
+  --durazno: #fdd08a;
+  --campo: #fff8ec;
+  --rojo: #ff6b6b;
+  --rojo-sombra: #ea4b4b;
+  --naranja: #ffa64a;
+  --naranja-sombra: #f08a26;
+  --turquesa: #76d1c4;
+  --turquesa-sombra: #4a9aa6;
+  --error: #d93b3b;
+  --ok: #2a9d6f;
+
+  /* ---- Gusano y ola superior ----
+     La ola tiene su punto más ALTO exacto en el centro de la página.
+     El gusano se coloca solo, con el centro de su cuerpo sobre ese punto.
+     Para cambiar tamaño o ajustar a mano, usa solo estas variables: */
+  --logo-alto: 160px;      /* tamaño del gusano */
+  --alto-ola: 150px;       /* alto de las olas */
+  --ola-fondo: 0.25;       /* a qué altura queda el borde de la ola en el CENTRO (0 = arriba, 1 = abajo) */
+  --logo-centro: 0.52;     /* en qué punto de la imagen está el cuerpo del gusano (0 = arriba, 1 = abajo) */
+  --logo-ajuste: -6px;     /* sube (+) o baja (-) el gusano respecto al borde de la ola */
+  --logo-arriba: calc(var(--alto-ola) * var(--ola-fondo) - var(--logo-alto) * var(--logo-centro) - var(--logo-ajuste));
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--crema);
+  color: var(--navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ---------- Olas decorativas ---------- */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--alto-ola);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  top: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-88 0 1440 100' preserveAspectRatio='none'%3E%3Cpath fill='%234b76c8' d='M-88,0H1440V45C1330,5 1230,10 1120,45C1010,80 910,90 800,55C690,20 600,15 500,45C400,75 290,85 190,50C110,25 50,20 0,40C-25,51 -55,58 -88,58Z'/%3E%3C/svg%3E");
+}
+
+body::after {
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath fill='%234b76c8' d='M0,100H1440V55C1330,90 1230,85 1120,55C1010,25 910,15 800,45C690,75 600,85 500,55C400,25 290,15 190,50C110,75 50,80 0,60Z'/%3E%3C/svg%3E");
+}
+
+/* ---------- Logo (imagen del gusano) ---------- */
+.logo {
+  position: absolute;
+  top: var(--logo-arriba);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3; /* <--- CAMBIO CLAVE: Eleva el gusano para que no quede detrás de la ola */
+  line-height: 0;
+  pointer-events: none;
+}
+
+.logo img {
+  height: var(--logo-alto);
+  width: auto;
+  max-width: none;
+  display: block;
+}
+
+/* ---------- Contenedor principal ---------- */
+.contenedor {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 560px;
+  padding: 140px 16px 100px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- Títulos ---------- */
+.titulo {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  line-height: 1.1;
+  text-align: center;
+  color: var(--navy);
+}
+
+.subtitulo {
+  font-weight: 700;
+  font-size: 0.88rem;
+  line-height: 1.3;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+
+/* ---------- Avatar ---------- */
+.avatar {
+  width: 68px;
+  height: 40px;
+  border-radius: 34px 34px 0 0;
+  background: var(--amarillo);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 6px;
+  margin-bottom: -4px;
+  position: relative;
+  z-index: 2;
+}
+
+.avatar svg {
+  width: 36px;
+  height: 36px;
+}
+
+/* ---------- Tarjeta amarilla ---------- */
+.tarjeta {
+  width: 100%;
+  max-width: 282px;
+  background: var(--amarillo);
+  border-radius: 30px;
+  border-bottom: 9px solid var(--amarillo-borde);
+  padding: 14px 35px 14px;
+}
+
+.tarjeta h2 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+/* ---------- Campos ---------- */
+.campo {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.campo:last-of-type {
+  margin-bottom: 8px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  height: 35px;
+  background: var(--campo);
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 7px 0 var(--durazno);
+  padding: 0 19px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  color: var(--navy);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.campo input::placeholder {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.85;
+}
+
+.campo select {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231f2a4d' d='M3 6h18L12 19z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.campo input:focus,
+.campo select:focus {
+  box-shadow: 0 7px 0 var(--durazno), 0 0 0 3px rgba(75, 118, 200, 0.45);
+}
+
+.campo.invalido input,
+.campo.invalido select {
+  box-shadow: 0 7px 0 var(--durazno), 0 0 0 2px var(--error);
+}
+
+.campo .error {
+  display: none;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--error);
+  margin: 12px 0 0 4px;
+}
+
+.campo.invalido .error {
+  display: block;
+}
+
+/* ---------- Mensaje general ---------- */
+.mensaje {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mensaje:empty {
+  display: none;
+}
+
+.mensaje.error { color: var(--error); }
+.mensaje.ok { color: var(--ok); }
+
+/* ---------- Botones ---------- */
+.botones {
+  display: flex;
+  gap: 5px;
+  margin-top: 26px;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 141px;
+  padding: 10px 18px 9px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, filter 0.15s;
+}
+
+.btn:hover { filter: brightness(1.05); }
+
+.btn-rojo {
+  background: var(--rojo);
+  box-shadow: 0 7px 0 var(--rojo-sombra);
+}
+
+.btn-naranja {
+  background: var(--naranja);
+  box-shadow: 0 7px 0 var(--naranja-sombra);
+}
+
+.btn-turquesa {
+  background: var(--turquesa);
+  box-shadow: 0 7px 0 var(--turquesa-sombra);
+  min-width: 144px;
+}
+
+.btn:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Enlace secundario ---------- */
+.enlace {
+  margin-top: 22px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.enlace a {
+  color: var(--azul-ola);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.enlace a:hover { text-decoration: underline; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 480px) {
+  .botones {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .btn { min-width: 220px; }
+  .tarjeta { max-width: 320px; }
+}
+
+/* ==========================================================
+   PÁGINAS DESPUÉS DEL LOGIN
+   ========================================================== */
+
+/* ---------- INICIO ---------- */
+.pagina-inicio {
+  /* Olas y gusano más delgados que en el login */
+  --alto-ola: 150px;
+  --logo-alto: 160px;
+  --logo-arriba: calc(var(--alto-ola) * var(--ola-fondo) - var(--logo-alto) * var(--logo-centro) - var(--logo-ajuste));
+  /* Fondo celeste arriba y crema abajo */
+  background: linear-gradient(to bottom, #c9e9fd 0, #c9e9fd 66%, var(--crema) 100%);
+}
+
+.inicio {
+  /* Escala de toda la pantalla de inicio: 1 = tamaño anterior, 1.35 = más grande.
+     Cambia solo este número para agrandar o achicar tarjetas, textos, iconos y gusano. */
+  --k: 1.35;
+
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  flex: 1;                    /* ocupa todo el alto disponible entre las olas */
+  display: flex;
+  justify-content: center;    /* centrado horizontal */
+  align-items: center;        /* centrado vertical */
+  gap: calc(42px * var(--k));
+  padding: calc(var(--alto-ola) * 0.75) 16px;
+}
+
+.columna-datos {
+  display: flex;
+  flex-direction: column;
+  gap: calc(30px * var(--k));
+}
+
+.dato {
+  width: calc(172px * var(--k));
+  height: calc(132px * var(--k));
+  background: #fff;
+  border-radius: calc(32px * var(--k));
+  box-shadow: 0 calc(14px * var(--k)) 0 #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10px * var(--k));
+  text-align: center;
+}
+
+.dato h2 {
+  font-size: calc(0.72rem * var(--k));
+  font-weight: 700;
+}
+
+.dato-valor {
+  display: flex;
+  align-items: center;
+  gap: calc(14px * var(--k));
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: calc(4rem * var(--k));
+  line-height: 1;
+}
+
+/* Cuando el número tiene 3 o más cifras, se achica un poco para que quepa */
+.dato-valor.largo {
+  font-size: calc(2.8rem * var(--k));
+}
+
+.icono-llama {
+  width: calc(56px * var(--k));
+  height: calc(76px * var(--k));
+}
+
+.icono-estrella {
+  width: calc(72px * var(--k));
+  height: calc(72px * var(--k));
+}
+
+.refran {
+  position: relative;
+  width: calc(390px * var(--k));
+  min-height: calc(263px * var(--k));
+  background: #fff;
+  border-radius: calc(44px * var(--k));
+  box-shadow: 0 calc(18px * var(--k)) 0 calc(-6px * var(--k)) #d9d9d9;
+  padding: calc(28px * var(--k)) calc(26px * var(--k)) calc(30px * var(--k));
+}
+
+.refran h2 {
+  font-size: calc(0.9rem * var(--k));
+  font-weight: 700;
+  margin-bottom: calc(14px * var(--k));
+}
+
+.refran-texto {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: calc(1.65rem * var(--k));
+  line-height: 1.3;
+  text-align: center;
+  color: #4a9aa6;
+  margin-bottom: calc(20px * var(--k));
+}
+
+.refran-acciones {
+  min-height: calc(120px * var(--k));
+}
+
+.refran-gusano {
+  position: absolute;
+  width: 80%;                 /* tamaño del gusano: sube/baja este % para agrandarlo o achicarlo */
+  right: -19%;                /* compensa el margen transparente de la imagen */
+  bottom: calc(2px * var(--k));
+  height: auto;
+  pointer-events: none;       /* la parte transparente no bloquea el botón */
+}
+
+.btn-verde {
+  background: #9bc41f;
+  box-shadow: 0 calc(7px * var(--k)) 0 #6d8c12;
+  min-width: calc(197px * var(--k));
+  padding: calc(16px * var(--k)) calc(18px * var(--k)) calc(14px * var(--k));
+  font-size: calc(0.85rem * var(--k));
+}
+
+/* Cerrar sesión (esquina inferior derecha) */
+.cerrar-sesion {
+  position: absolute;
+  right: 20px;
+  bottom: 56px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: left;
+  color: var(--azul-ola);
+}
+
+.cerrar-sesion svg {
+  width: 44px;
+  height: 57px;
+}
+
+.cerrar-sesion:hover { filter: brightness(0.9); }
+
+/* ---------- CUENTA CUENTOS ---------- */
+.pagina-cuentos {
+  --alto-ola: 150px;
+  --logo-alto: 150px;
+  --logo-arriba: 6px;
+}
+
+.pagina-cuentos .logo {
+  left: 1290px;
+  right: 26px;
+  top: -20px;
+  transform: none;
+}
+
+.btn-menu {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-menu svg { width: 100%; height: 100%; }
+
+.menu-panel {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 8px;
+  z-index: 6;
+  min-width: 190px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 0 #d9d9d9;
+  padding: 8px;
+}
+
+.menu-panel.abierto { display: block; }
+
+.menu-panel a,
+.menu-panel button {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.menu-panel a:hover,
+.menu-panel button:hover { background: var(--amarillo); }
+
+.cuentos {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 940px;
+  flex: 1;                    /* ocupa todo el alto disponible entre las olas */
+  padding: calc(var(--alto-ola) * 0.75) 16px calc(var(--alto-ola) * 0.75 + 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* centrado vertical */
+  align-items: center;        /* centrado horizontal */
+}
+
+.cuentos .titulo {
+  font-size: clamp(2rem, 6vw, 2.6rem);
+}
+
+.cuentos .subtitulo {
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+
+.tarjeta-instrucciones {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  background: var(--amarillo);
+  border-radius: 40px;
+  border-bottom: 9px solid var(--amarillo-borde);
+  padding: 14px 40px 84px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.tarjeta-instrucciones p {
+  margin-bottom: 15px;
+}
+
+.tarjeta-instrucciones .centrado {
+  text-align: center;
+  margin-top: 19px;
+  margin-bottom: 0;
+}
+
+/* Botón y gusano salen por debajo de la tarjeta */
+.acciones-cuento {
+  position: absolute;
+  left: 22%;
+  bottom: -58px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.btn-grande {
+  min-width: 250px;
+  padding: 24px 34px 22px;
+  font-size: 1.05rem;
+  box-shadow: 0 9px 0 var(--naranja-sombra);
+}
+
+.acciones-gusano {
+  width: 300px;
+  height: auto;
+  margin-left: -16px;
+  margin-bottom: -30px;
+}
+
+/* Botón de casa (abajo a la izquierda) */
+.btn-casa {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+}
+
+.btn-casa svg { width: 100%; height: 100%; }
+
+/* ---------- Responsivo (después del login) ---------- */
+@media (max-width: 760px) {
+  .inicio {
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .columna-datos { flex-direction: row; gap: 16px; }
+
+  .refran { width: 100%; max-width: 342px; }
+
+  .cerrar-sesion {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    z-index: 1;
+    margin: -70px 0 110px;
+  }
+
+  .acciones-cuento {
+    position: static;
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .tarjeta-instrucciones { padding-bottom: 20px; }
+  .cuentos { padding-bottom: 150px; }
+}
+
+
+/* Aviso breve (por ejemplo, al registrar el día jugado) */
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: 84px;
+  z-index: 20;
+  transform: translate(-50%, 20px);
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 14px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.aviso.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Pantallas medianas y chicas: vuelve a la escala normal ---------- */
+@media (max-width: 900px) {
+  .inicio { --k: 1; }
+}
+
+@media (max-width: 760px) {
+  .acciones-cuento {
+    flex-direction: column;
+    align-items: center;
+  }
+  .acciones-gusano {
+    width: 160px;
+    margin: 0;
+  }
+}

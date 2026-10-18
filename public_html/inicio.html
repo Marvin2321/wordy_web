@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordy | Inicio</title>
+  <link rel="stylesheet" href="estilos/estilo.css">
+</head>
+<body class="pagina-inicio" data-requiere-sesion>
+
+  <!-- Imagen del gusano (img/wordy-logo.png) -->
+  <div class="logo">
+    <img src="img/wordy_logo.png" alt="Wordy">
+  </div>
+
+  <main class="inicio">
+
+    <div class="columna-datos">
+      <section class="dato">
+        <h2>Días de Racha</h2>
+        <div class="dato-valor">
+          <span id="racha">0</span>
+          <svg class="icono-llama" viewBox="10 2 44 60" aria-hidden="true">
+            <path d="M33 3c1 9 5 13 10 19 5 6 8 12 8 20a19 19 0 0 1-38 0c0-8 4-13 8-17 1 4 3 7 6 8-3-10-1-22 6-30z" fill="#ff6a3d"/>
+            <path d="M32 26c3 6 9 10 9 18a9 9 0 0 1-18 0c0-5 3-8 5-11 1 3 2 4 4 4-1-4-1-8 0-11z" fill="#ffb02e"/>
+            <path d="M32 42c2 3 4 5 4 8a4 4 0 0 1-8 0c0-3 2-5 4-8z" fill="#ffe27a"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="dato">
+        <h2>Estrellas Acumuladas</h2>
+        <div class="dato-valor">
+          <span id="estrellas">0</span>
+          <svg class="icono-estrella" viewBox="0 0 64 64" aria-hidden="true">
+            <polygon points="32,5 39.6,22.5 58.6,24.3 44.4,37 48.5,55.7 32,46 15.5,55.7 19.6,37 5.4,24.3 24.4,22.5"
+                     fill="#ffd25a" stroke="#ffd25a" stroke-width="8" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <section class="refran">
+      <h2>Frase / Refrán del día</h2>
+      <p id="refran" class="refran-texto">&nbsp;</p>
+      <div class="refran-acciones">
+        <a href="cuentos.html" class="btn btn-verde">¡Continuar Aventura!</a>
+      </div>
+      <!-- Imagen del gusano lector (img/gusano-lector.png) -->
+      <img class="refran-gusano" src="img/gusano_lector.png" alt="">
+    </section>
+
+  </main>
+
+  <button type="button" id="cerrarSesion" class="cerrar-sesion">
+    <svg viewBox="0 0 34 44" aria-hidden="true">
+      <rect width="34" height="44" rx="7" fill="#4b76c8"/>
+      <path d="M8 22h15M18 15l7 7-7 7" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Cerrar<br>sesión.</span>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>
