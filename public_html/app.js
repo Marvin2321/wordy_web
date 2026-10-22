@@ -190,7 +190,46 @@ function iniciarCuentos() {
     if (destino) window.location.href = destino;
   });
 }
+/* ==========================================================
+   CONTROL PARENTAL prueba
+   ========================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const formito = document.getElementById('formito');
+  const vistaVinc = document.getElementById('vistaVinc');
+  const vistaProg = document.getElementById('vistaProg');
+  const mensajeCtrl = document.getElementById('mensajeCtrl');
 
+  if (formito) {
+    formito.addEventListener('submit', (e) => {
+      e.preventDefault(); // Evita que la página se recargue
+
+      const usuarioNino = document.getElementById('usuito').value.trim();
+      const passNino = document.getElementById('passcito').value.trim();
+      const correoNino = document.getElementById('corrito').value.trim();
+
+      // Validación rápida de que llenó los campos
+      if (!usuarioNino || !passNino || !correoNino) {
+        if (mensajeCtrl) {
+          mensajeCtrl.className = 'mensaje error';
+          mensajeCtrl.textContent = 'Por favor, llena todos los campos.';
+        }
+        return;
+      }
+
+      // Si todo está lleno, simulamos el éxito del vínculo:
+      if (mensajeCtrl) {
+        mensajeCtrl.className = 'mensaje ok';
+        mensajeCtrl.textContent = '✔ ¡Niño vinculado correctamente!';
+      }
+
+      // Espera medio segundo y cambia de la vista de formulario a la de progreso
+      setTimeout(() => {
+        vistaVinc.classList.add('oculto');
+        vistaProg.classList.remove('oculto');
+      }, 500);
+    });
+  }
+});
 /* ---------- Menú hamburguesa ---------- */
 function iniciarMenu() {
   const boton = document.getElementById('btnMenu');

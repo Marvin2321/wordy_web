@@ -622,6 +622,154 @@ body::after {
 
 .btn-casa svg { width: 100%; height: 100%; }
 
+/* ==========================================================
+   WORDY - Control Parental (Estilos específicos)
+   ========================================================== */
+
+/* Regla para alternar entre el formulario y el panel de progreso */
+.vista-control.oculto {
+  display: none !important;
+}
+
+.vista-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tarjeta del formulario de vinculación */
+.tarjitaVinc {
+  max-width: 400px;
+  margin-top: 10px;
+}
+
+/* Plaquita con el nombre del niño vinculado */
+.badgecito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+  background: var(--durazno);
+  border-radius: 30px;
+  padding: 12px 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 0 #e6b875;
+}
+
+.badgecito svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--navy);
+}
+
+.badgecito-txt {
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.badgecito-txt span {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Rejilla de tarjetas de progreso */
+.grid-prog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 780px;
+}
+
+/* Tarjeta individual de estadísticas por módulo */
+.tarjitaStat {
+  background: #fff;
+  border-radius: 35px;
+  box-shadow: 0 12px 0 #d9d9d9;
+  padding: 25px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tarjitaStat h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 18px;
+}
+
+.cont-stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* Cuadro amarillo de estrellas acumuladas */
+.cajitaEstrellas {
+  background: #fff8ec;
+  border: 3px solid var(--amarillo-borde);
+  border-radius: 24px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 105px;
+}
+
+.cajitaEstrellas svg {
+  width: 40px;
+  height: 40px;
+}
+
+.num-estrellas {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.lbl-estrellas {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--navy);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Texto informativo de aciertos, intentos y nivel */
+.detalles-num {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.detalles-num p span {
+  font-weight: 700;
+  color: var(--azul-ola);
+}
+
+/* Adaptación responsiva para móviles */
+@media (max-width: 600px) {
+  .grid-prog {
+    grid-template-columns: 1fr;
+  }
+}
 /* ---------- Responsivo (después del login) ---------- */
 @media (max-width: 760px) {
   .inicio {

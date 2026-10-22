@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordy | Control Parental</title>
+  <link rel="stylesheet" href="estilos/estilo.css">
+</head>
+<body class="pagina-cuentos" data-requiere-sesion>
+
+  <!-- Menú (hamburguesa) -->
+  <button type="button" id="btnMenu" class="btn-menu" aria-label="Abrir menú" aria-expanded="false">
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <path d="M6 9h22M6 17h22M6 25h22" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <nav id="menuPanel" class="menu-panel" aria-label="Menú principal">
+    <a href="inicio.html">Inicio</a>
+    <a href="cuentos.html">Cuenta cuentos</a>
+    <a href="control_parental.html">Control Parental</a>
+    <button type="button" id="menuCerrarSesion">Cerrar sesión</button>
+  </nav>
+
+  <!-- Imagen del gusano -->
+  <div class="logo">
+    <img src="img/wordy_logo.png" alt="Wordy">
+  </div>
+
+  <main class="cuentos">
+    <h1 class="titulo">Control parental</h1>
+    <p class="subtitulo">Acompaña en su trayectoria a tu pequeño</p>
+
+    <!-- VISTA 1: FORMULARIO DE VINCULACIÓN -->
+    <div id="vistaVinc" class="vista-control">
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="#fff8ec" stroke="#1f2a4d" stroke-width="2.5"/>
+          <circle cx="24" cy="18" r="8" fill="#1f2a4d"/>
+          <path d="M8 38c2-8 8-11 16-11s14 3 16 11c-4 4-9 6-16 6s-12-2-16-6z" fill="#1f2a4d"/>
+        </svg>
+      </div>
+
+      <form id="formito" class="tarjeta tarjitaVinc" novalidate>
+        <h2>¿Aún no has vinculado a tu hijo?<br>Ingresa sus datos</h2>
+
+        <div class="campo">
+          <input type="text" id="usuito" name="usuito" placeholder="Usuario del niño" required>
+          <span class="error">Ingresa el usuario del niño.</span>
+        </div>
+
+        <div class="campo">
+          <input type="password" id="passcito" name="passcito" placeholder="Contraseña del niño" required>
+          <span class="error">Ingresa la contraseña.</span>
+        </div>
+
+        <div class="campo">
+          <input type="email" id="corrito" name="corrito" placeholder="Correo vinculado al niño" required>
+          <span class="error">Ingresa un correo válido.</span>
+        </div>
+
+        <p id="mensajeCtrl" class="mensaje" role="alert" aria-live="polite"></p>
+      </form>
+
+      <div class="botones">
+        <button type="submit" form="formito" id="botoncito" class="btn btn-turquesa">Vincular</button>
+      </div>
+    </div>
+
+    <!-- VISTA 2: PANEL DE PROGRESO -->
+    <div id="vistaProg" class="vista-control oculto">
+      <div id="badgecito" class="badgecito">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+        <div class="badgecito-txt">
+          <span>Niño vinculado:</span>
+          Anton Aguilar Zamora
+        </div>
+      </div>
+
+      <div class="grid-prog">
+        <!-- Módulo: Cuenta Cuentos -->
+        <section class="tarjitaStat">
+          <h3>Cuenta Cuentos</h3>
+          <div class="cont-stats">
+            <div class="cajitaEstrellas">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <polygon points="32,5 39.6,22.5 58.6,24.3 44.4,37 48.5,55.7 32,46 15.5,55.7 19.6,37 5.4,24.3 24.4,22.5" fill="#ffd25a" stroke="#ffd25a" stroke-width="4" stroke-linejoin="round"/>
+              </svg>
+              <span class="num-estrellas">6</span>
+              <span class="lbl-estrellas">Estrellas</span>
+            </div>
+            <div class="detalles-num">
+              <p>Intentos: <span>5</span></p>
+              <p>Aciertos: <span>2</span></p>
+              <p>Nivel: <span>1</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Módulo: Aprende Palabras -->
+        <section class="tarjitaStat">
+          <h3>Aprende Palabras</h3>
+          <div class="cont-stats">
+            <div class="cajitaEstrellas">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <polygon points="32,5 39.6,22.5 58.6,24.3 44.4,37 48.5,55.7 32,46 15.5,55.7 19.6,37 5.4,24.3 24.4,22.5" fill="#ffd25a" stroke="#ffd25a" stroke-width="4" stroke-linejoin="round"/>
+              </svg>
+              <span class="num-estrellas">7</span>
+              <span class="lbl-estrellas">Estrellas</span>
+            </div>
+            <div class="detalles-num">
+              <p>Intentos: <span>105</span></p>
+              <p>Aciertos: <span>48</span></p>
+              <p>Nivel: <span>2</span></p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Volver al inicio -->
+  <a href="inicio.html" class="btn-casa" aria-label="Ir al inicio">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 4 3 15h4v12h7v-8h4v8h7V15h4L16 4z" fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
